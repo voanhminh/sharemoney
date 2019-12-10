@@ -14,7 +14,7 @@ pool.query('SELECT NOW()', (err, res) => {
 
 const server = http.createServer((req, res) => {
   try {
-    pool.query('SELECT NOW()', (err, result) => {
+    pool.query('SELECT * FROM USERS', (err, result) => {
       console.log(err, res)
       res.statusCode = 200;
       res.end(`Hello Node! from PORT ${port}\n data: ${JSON.stringify(result || {})}`);
