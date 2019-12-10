@@ -1,7 +1,7 @@
-module.exports =  {
+module.exports = {
     database: 'postgres',
-    host: 'host-name',
+    host: 'database-share-money.c4ybiljgernl.us-east-2.rds.amazonaws.com',
     port: '5432',
-    user: 'user',
-    password: 'password',
+    user: 'master',
+    password: 'Admin-123',
 }
