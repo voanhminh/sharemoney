@@ -1,18 +1,13 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-const router = express.Router();
+const http = require('http');
+const port = process.env.PORT || 3000;
 
+const db = require('./db_connect');
 const dbConfig = require('./config/db');
+
 const { Pool, Client } = require('pg');
 const pool = new Pool(dbConfig);
 
-router.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/index.html'));
-  //__dirname : It will resolve to your project folder.
-});
-
-router.get('/users', function (req, res) {
+const server = http.createServer((req, res) => {
   try {
     pool.query('SELECT * FROM public.users', (err, result) => {
       console.log(err, res)
@@ -28,12 +23,6 @@ router.get('/users', function (req, res) {
   }
 });
 
-router.get('/sitemap', function (req, res) {
-  res.sendFile(path.join(__dirname + '/sitemap.html'));
+server.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}/`);
 });
-
-//add the router
-app.use('/', router);
-app.listen(process.env.port || 3000);
-
-console.log('Running at Port 3000');
