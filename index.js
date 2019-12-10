@@ -7,30 +7,13 @@ const dbConfig = require('./config/db');
 const { Pool, Client } = require('pg');
 const pool = new Pool(dbConfig);
 
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
-
 const server = http.createServer((req, res) => {
   try {
-    pool.query('SELECT * FROM USERS', (err, result) => {
+    pool.query('SELECT * FROM public.users', (err, result) => {
       console.log(err, res)
       res.statusCode = 200;
-      res.end(`Hello Node! from PORT ${port}\n data: ${JSON.stringify(result || {})}`);
+      res.end(`Hello NodeJs! from PORT ${port}\n data: ${JSON.stringify(result || {})}`);
     })
-
-    // db.getAll('todo')
-    //   .then(result => {
-    //     res.statusCode = 200;
-    //     res.end(`Hello Node! from PORT ${port}\n data: ${JSON.stringify(result || {})}`);
-    //   })
-    //   .catch(e => {
-    //     console.log(e);
-    //     res.statusCode = 200;
-    //     res.end(`Hello Node! from PORT ${port}\n Error: ${e.message}`);
-    //   })
-
   } catch (e) {
     console.log(e);
     res.statusCode = 200;
