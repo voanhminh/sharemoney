@@ -1,28 +1,15 @@
-const http = require('http');
-const port = process.env.PORT || 3000;
+const express = require('express')
+const app = express()
+const port = 3000
 
-const db = require('./db_connect');
-const dbConfig = require('./config/db');
+app.get('/', (request, response) => {
+  response.send('Hello from Express!')
+})
 
-const { Pool, Client } = require('pg');
-const pool = new Pool(dbConfig);
-
-const server = http.createServer((req, res) => {
-  try {
-    pool.query('SELECT * FROM public.users', (err, result) => {
-      console.log(err, res)
-      res.statusCode = 200;
-      res.end(`Hello NodeJs! from PORT ${port}\n data: ${JSON.stringify(result || {})}`);
-    })
-  } catch (e) {
-    console.log(e);
-    res.statusCode = 200;
-    res.end(`Hello Node! from PORT ${port}\n Error: ${e.message}`);
-  } finally {
-    pool.end();
+app.listen(port, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
   }
-});
 
-server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}/`);
-});
+  console.log(`server is listening on ${port}`)
+})
