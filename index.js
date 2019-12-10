@@ -9,10 +9,10 @@ const pool = new Pool(dbConfig);
 
 const server = http.createServer((req, res) => {
   try {
-    pool.query('SELECT * FROM users', (err, result) => {
+    pool.query('SELECT * FROM public.users', (err, result) => {
       console.log(err, res)
       res.statusCode = 200;
-      res.json(result);
+      res.end(`Hello NodeJs! from PORT ${port}\n data: ${JSON.stringify(result || {})}`);
     })
   } catch (e) {
     console.log(e);
