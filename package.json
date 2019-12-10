@@ -1,5 +1,5 @@
 {
-  "name": "papa-node-hello-000",
+  "name": "share-money",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/johnpapa/node-hello/issues"
   },
-  "homepage": "https://github.com/johnpapa/node-hello#readme"
+  "homepage": "https://github.com/johnpapa/node-hello#readme",
+  "dependencies": {
+    "postgresql-easy": "^1.2.5"
+  }
 }
