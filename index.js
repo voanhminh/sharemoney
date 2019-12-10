@@ -7,8 +7,9 @@ const dbConfig = require('./config/db');
 const { Pool, Client } = require('pg');
 const pool = new Pool(dbConfig);
 
-app.get('/', (request, response) => {
-  response.send('Hello from Express!')
+app.get('/', (request, res) => {
+  //res.send('Hello from Express!');
+  res.sendFile(path.join(__dirname + '/index.html'));
 })
 
 app.get('/users', (request, res) => {
