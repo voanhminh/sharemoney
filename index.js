@@ -17,7 +17,7 @@ app.get('/users', (request, res) => {
     pool.query('SELECT * FROM public.users', (err, result) => {
       console.log(err, res)
       res.statusCode = 200;
-      res.json({ data: result || [] });
+      res.json({ rows: result.rows || [], fields: result.fields || [] });
     })
   } catch (e) {
     console.log(e);
@@ -33,7 +33,7 @@ app.get('/contents', (request, res) => {
     pool.query('SELECT * FROM public.contents', (err, result) => {
       console.log(err, res)
       res.statusCode = 200;
-      res.json({ data: result || [] });
+      res.json({ rows: result.rows || [], fields: result.fields || [] });
     })
   } catch (e) {
     console.log(e);
