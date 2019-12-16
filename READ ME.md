@@ -18,3 +18,7 @@ INSERT INTO public.contents(
 	VALUES (uuid_generate_v4(),uuid_generate_v4(), 'youtube', uuid_generate_v4(), 'view', now(), now(), 'https://www.youtube.com/watch?v=9SZA5yVJbhI&feature=share&fbclid=IwAR0Dg910cCLY-07eksfGwUgq0j1eUYU6_GPzZEPWg0UodaZwoJrBTGNAC7k');
 
 #=================================================================================
+
+aws app name: share-money
+
+#=================================================================================

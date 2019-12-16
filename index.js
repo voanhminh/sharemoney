@@ -21,10 +21,10 @@ app.get('/users', (request, res) => {
     })
   } catch (e) {
     console.log(e);
-    res.statusCode = 200;
+    res.statusCode = 500;
     res.end(`Hello Node! from PORT ${port}\n Error: ${e.message}`);
   } finally {
-    pool.end();
+    //pool.end();
   }
 })
 
@@ -37,10 +37,10 @@ app.get('/contents', (request, res) => {
     })
   } catch (e) {
     console.log(e);
-    res.statusCode = 200;
+    res.statusCode = 500;
     res.end(`Hello Node! from PORT ${port}\n Error: ${e.message}`);
   } finally {
-    pool.end();
+    //pool.end();
   }
 })
 
