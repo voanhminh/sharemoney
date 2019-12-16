@@ -17,11 +17,13 @@ app.get('/users', (request, res) => {
     pool.query('SELECT * FROM public.users', (err, result) => {
       console.log(err, res)
       res.statusCode = 200;
+      res.setHeader("Access-Control-Allow-Origin", "*");
       res.json({ rows: result.rows || [], fields: result.fields || [] });
     })
   } catch (e) {
     console.log(e);
     res.statusCode = 500;
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.end(`Hello Node! from PORT ${port}\n Error: ${e.message}`);
   } finally {
     //pool.end();
@@ -33,11 +35,13 @@ app.get('/contents', (request, res) => {
     pool.query('SELECT * FROM public.contents', (err, result) => {
       console.log(err, res)
       res.statusCode = 200;
+      res.setHeader("Access-Control-Allow-Origin", "*");
       res.json({ rows: result.rows || [], fields: result.fields || [] });
     })
   } catch (e) {
     console.log(e);
     res.statusCode = 500;
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.end(`Hello Node! from PORT ${port}\n Error: ${e.message}`);
   } finally {
     //pool.end();
