@@ -34,6 +34,24 @@ app.get('/users', (request, res) => {
   }
 })
 
+app.get('/users/:userId/overview', (request, res) => {
+  try {
+    pool.query(`select users_income_monthly_overview.*, users.firstname, users.lastname from 
+    users_income_monthly_overview, users 
+    where users_income_monthly_overview.user_id::VARCHAR = users.id::VARCHAR where user.id::VARCHAR = ${request.params.userId}`, (err, result) => {
+      console.log(err, res)
+      res.statusCode = 200;
+      res.json({ rows: result.rows || [], fields: result.fields || [] });
+    })
+  } catch (e) {
+    console.log(e);
+    res.statusCode = 500;
+    res.end(`Hello Node! from PORT ${port}\n Error: ${e.message}`);
+  } finally {
+    //pool.end();
+  }
+})
+
 app.get('/contents', (request, res) => {
   try {
     pool.query('SELECT * FROM public.contents', (err, result) => {
