@@ -18,7 +18,7 @@ app.get('/', (request, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 })
 
-app.get('/users', (request, res) => {
+app.get('/users', (req, res) => {
   try {
     pool.query('SELECT * FROM public.users', (err, result) => {
       console.log(err, res)
@@ -34,11 +34,11 @@ app.get('/users', (request, res) => {
   }
 })
 
-app.get('/users/:userId/overview', (request, res) => {
+app.get('/users/:userId/overview', (req, res) => {
   try {
     pool.query(`select users_income_monthly_overview.*, users.firstname, users.lastname from 
     users_income_monthly_overview, users 
-    where users_income_monthly_overview.user_id::VARCHAR = users.id::VARCHAR where user.id::VARCHAR = ${request.params.userId}`, (err, result) => {
+    where users_income_monthly_overview.user_id::VARCHAR = users.id::VARCHAR and users.id::VARCHAR = '${req.params.userId}'`, (err, result) => {
       console.log(err, res)
       res.statusCode = 200;
       res.json({ rows: result.rows || [], fields: result.fields || [] });
