@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 app.post('/login', async (req, res) => {
   try {
     let body = req.body;
-    body = JSON.parse(body);
+    //body = JSON.parse(body);
     let rawGoogleClientCredentials = fs.readFileSync('credentials.json');
     let googleClientCredentials = JSON.parse(rawGoogleClientCredentials);
     let CLIENT_ID = googleClientCredentials.web.client_id;
