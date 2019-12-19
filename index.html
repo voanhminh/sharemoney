@@ -19,9 +19,12 @@
             url: "/login",
             type: "POST",
             contentType: "application/json",
-            data: googleUser,
+            data: JSON.stringify(googleUser),
             dataType: 'json',
             success: function (result) {
+                console.log(result);
+            },
+            error: function (error) {
                 console.log(result);
             }
         })
