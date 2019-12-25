@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "share-money",
+  "private_key_id": "a9e206dc0d671a2f832820072d4c1455cde24c20",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5En0I6yIC8dPo\n64lzp3ccNB0fPtTx8OnwQQ3xdsQxJQma0POGfIpFNmaE6aSTSu8bbGxR5Z6x7kcj\nkf4VRuu5iE+xVHkN0Hulw9VUbheBOR75CvjNNjmCXQc13YLm5Nl7UBP7I1PmBsSM\npV3Ww3KhF/rWLvk6TWg3TlycMugxE975fG7luW2IP8wMldoA78GGtjlwr8gv0Kl2\nAClCPBTagY4lDSy9hk7Vr6dedYn3wi4kyLrKYBhk1XpG8/igz55iiGLII02fuJs4\ncw18qz4oOKciNkgmv0V7uWkjG6ykKB2uAeeFwSsrBBlSbrMmZ7wrUbqPaB0ZEQcq\nCKw01zkVAgMBAAECggEAB0+J0o8zQJQxRPCqSoAcLj2IGaK07Q+8C1UOihzLwuM4\nfhNF+L3fr7yROoEzkpacW7l3N+75oK64bwPGhSxQMHvde171CeIpQug5pkRTt7OR\ncSYJTlXs2fpMcsjFcdMqx3pnfP1YGZc9LrnI5gHCJpyYuIWSK8brWHqcduvIjJ5a\nn2HTvMclt66ssRXSf3/FvK4OixVJ7zRSDyzx2V/QG93/GWvBNcV4L6rsA8hQ7EMz\nrTY/eONrFAT2E4Q32r6JmN8KBYfPfNONewKzxwf/saWr4Aj4oDKAtWQ9kwJC/QBv\nOMvrxP6S89H/L08eoCTDObEuqSFTAJJVTRLA4f4CMQKBgQDhSKDdi/2yFFnAhc26\nyEOew+/D/5KWiYFwXqzHFsPXTJC9TV9/epG9jFFKQL3tpvwrt+NA6qi+K/FOtHF0\nW+ZdT+xqTz90e2K3aW7ZpHwY5XNIX9La4I0CNxQsJ60QLIOiTMkO4TvRnpgbSlK0\nJHw5L2ULDCX8/bKECY2Ry25dWQKBgQDSTk5YraZS5bozkPL7HNNeyhz6h2WC0ccY\ntM05sZv9T15FCsBJlOXWcadwaWHGBXFaNkCyaCg3yHQn1VPrylHCeW/+SHw/ISrL\naRRf+V27TmdHFrAIA7cxESnp+bfBHJNvV52v7SbehyteoTiY4aUJAys6rkJCujaX\nW73F+LkWHQKBgAXHSCEGozY7IWY3yGQfGOTsn6zGVGs6EbDhLMtagSF3nErOvkFV\n0oErJTajXHvJCbTRXanfmv5twB3FsRdL+CeykhzT9Yu2Unzj3m0EtA4rbH6RvqXQ\nlq1U3laXme/NRH8YOxv/mPoyeDJTALYQLYOF/LCA2kSX+Uk7uX7g2e7ZAoGAHEpM\nX8F8Tkp48dbd2MnX5ThrDYiJLz/o+HnZ4Zjy0vCKTd9UXpGZGW/Qhl6muGyjAu+p\nZFZ+koJ0nack0uM0fGS5nAtEK3nat+I6y25QHZI+cmGq7GkTi5YzfTYKcf/WFXRD\n0hak0+p6+w/U/TvdZ4j1l785SqCiF1pP/QGoZEECgYEAmAdxnrq+2zNGjoVj0beB\nxqskUMPez96ZAJVE31gewo1fk2d4EKXlle1NuGDebP6j20B3IyzRnh27z4Qj5Ugy\ny35OzT5HriZ5nL1br8N7QK8qdIKUCZJVDMbUb+1gpXx7/D/Il3zDWxufTjINEYuM\n6/epzEiOUN3rNiTPXD1c1zE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sharemoneyserviceacount@share-money.iam.gserviceaccount.com",
+  "client_id": "118385834671043885190",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sharemoneyserviceacount%40share-money.iam.gserviceaccount.com"
+}

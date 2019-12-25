@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+var bodyParser = require('body-parser');
+
 const port = process.env.PORT || 3000;
 
 const dbConfig = require('./config/db');
@@ -8,7 +10,7 @@ const { Pool, Client } = require('pg');
 const pool = new Pool(dbConfig);
 
 const { OAuth2Client } = require('google-auth-library');
-
+const request = require('request');
 const fs = require('fs');
 
 
@@ -18,11 +20,15 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(bodyParser.json());
+
+let rawApiKeys = fs.readFileSync(__dirname + '/client_api_key.json');
+let apiKeys = JSON.parse(rawApiKeys);
+
 app.post('/login', async (req, res) => {
   try {
     let body = req.body;
-    //body = JSON.parse(body);
-    let rawGoogleClientCredentials = fs.readFileSync('credentials.json');
+    let rawGoogleClientCredentials = fs.readFileSync(__dirname + '/credentials.json');
     let googleClientCredentials = JSON.parse(rawGoogleClientCredentials);
     let CLIENT_ID = googleClientCredentials.web.client_id;
     let ID_TOKEN = body.id_token;
@@ -34,19 +40,30 @@ app.post('/login', async (req, res) => {
     });
     const payload = ticket.getPayload();
     const userid = payload['sub'];
-    verify().catch(console.error);
     res.statusCode = 200;
-    res.json({ rows: result.rows || [], fields: result.fields || [] });
+    res.json(payload);
   } catch (e) {
     console.log(e);
     res.statusCode = 500;
-    res.end(`Hello Node! from PORT ${port}\n Error: ${e.message}`);
+    res.end(`Login Failed: ${e.message}`);
   }
 })
 
-app.get('/', (request, res) => {
+app.get('/', (req, res) => {
   //res.send('Hello from Express!');
   res.sendFile(path.join(__dirname + '/index.html'));
+})
+
+app.get('/youtube/videos/:id', (req, res) => {
+  request(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${req.params.id}&key=${apiKeys.API_KEY_1}`, { json: true }, (err, googleRes, body) => {
+    if (err) {
+      res.statusCode = 500;
+      res.end(`Hello Node! from PORT ${port}\n Error: ${err.message}`);
+      return console.log(err);
+    }
+    res.statusCode = 200;
+    res.json(body);
+  });
 })
 
 app.get('/users', (req, res) => {

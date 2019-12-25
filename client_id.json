@@ -1,0 +1,17 @@
+{
+    "web": {
+        "client_id": "768219521648-ej8o0kh3ro4qolsl1b0qpc8grfamavjj.apps.googleusercontent.com",
+        "project_id": "share-money",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "stq7PQPHfjC3xW9ICD1-ZjKu",
+        "redirect_uris": [
+            "http://localhost:3000/auth2callback",
+            "http://sharemoney-env.7cskxswr2a.us-east-2.elasticbeanstalk.com/google/auth2callback"
+        ],
+        "javascript_origins": [
+            "http://sharemoney-env.7cskxswr2a.us-east-2.elasticbeanstalk.com"
+        ]
+    }
+}

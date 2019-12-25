@@ -14,12 +14,21 @@
 
 <script>
 
+    let token = {
+        idpId: "",
+        id_token: ""
+    };
+
     function signInShareMoney(googleUser, callback) {
+        let authResponse = googleUser.getAuthResponse();
+        //authResponse.id_token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTEwOTFkYTAzYmFhNDA5MTllNmZmODM2YzhlN2Y5YWZhYmE5YTgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzUzODA3MzU0NzE0LTNza2oxOTRnY3UyNGNkNzh2MTliYTE3aDdmMWg5ZGdoLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzUzODA3MzU0NzE0LTNza2oxOTRnY3UyNGNkNzh2MTliYTE3aDdmMWg5ZGdoLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0ODY1ODcwNTI1ODczMzc0MjgyIiwiZW1haWwiOiJ2b2FuaG1pbmgyNzA3MTk4NkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IjhDOUk0LXp4VmRyM0tWWGtsYnBmWFEiLCJuYW1lIjoibWluaCB2byBhbmgiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FBdUU3bUJaT2RUVEZBbDByM3BCS3VjYWVJd01uSEk4dmJCYkMwY080TWJVQkE9czk2LWMiLCJnaXZlbl9uYW1lIjoibWluaCIsImZhbWlseV9uYW1lIjoidm8gYW5oIiwibG9jYWxlIjoidmkiLCJpYXQiOjE1NzY3NDExNTksImV4cCI6MTU3Njc0NDc1OSwianRpIjoiYTBiZTJlYWJlOGYxMjQ2ODdjZmNhZDZkZDBkZDNjZTJmYjRiYjMyMSJ9.VqXirmBBQQ479iOqgmX3cEJl__F67BtnIc8ZAwlZUoxTk - LOIjX - R6zzPY3coFSjAnVAGFyYZnfzDBsiH3w8hG0Osogu5amMs5u02ZCEU4cIe7SYyibaLJltYCNIpBI5GL4_V7DwnqKrw9byJZYaqh3XoykTjedOfFwIt7jxQ75hX291E3NxQyuuVbSZp1fHbJtv7yXU56p4VlfewlFHCZ9X1q_wUvamc0zVWI3btdtUaJMfBXG68HPzPIpF9tapC4EfAgaLYJd0J - o6SDYpXCk2lI54o4HfHShOiCsOazEtJB1J1hjp8Cmcghsp1xYwmeE7nKrxsGDVgLBXFlTLSA";
+        token.idpId = authResponse.idpId;
+        token.id_token = authResponse.id_token;
         $.ajax({
             url: "/login",
             type: "POST",
             contentType: "application/json",
-            data: JSON.stringify(googleUser),
+            data: JSON.stringify(token),
             dataType: 'json',
             success: function (result) {
                 console.log(result);
@@ -46,13 +55,16 @@
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
             console.log('User signed out.');
+            token = {
+                idpId: "",
+                id_token: ""
+            };
         });
     }
 </script>
 
 <body>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <a href="#" onclick="signOut();">Sign out</a>
+
     <div style="margin:100px;">
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
@@ -77,6 +89,8 @@
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
         </div>
         <div id="users_list_id"></div>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a href="#" onclick="signOut();">Sign out</a>
     </div>
 </body>
 
