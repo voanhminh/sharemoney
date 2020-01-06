@@ -1,99 +1,31 @@
 <html>
-<meta name="google-signin-scope"
-    content="https://www.googleapis.com/auth/yt-analytics.readonly https://www.googleapis.com/auth/yt-analytics-monetary.readonly profile email openid https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/youtubepartner-channel-audit">
-<meta name="google-signin-client_id" content="768219521648-ej8o0kh3ro4qolsl1b0qpc8grfamavjj.apps.googleusercontent.com">
 
 <head>
-    <title>Express HTML</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <title>Share Money</title>
 </head>
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-
-<script>
-
-    let token = {
-        idpId: "",
-        id_token: ""
-    };
-
-    function signInShareMoney(googleUser, callback) {
-        let authResponse = googleUser.getAuthResponse();
-        //authResponse.id_token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTEwOTFkYTAzYmFhNDA5MTllNmZmODM2YzhlN2Y5YWZhYmE5YTgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzUzODA3MzU0NzE0LTNza2oxOTRnY3UyNGNkNzh2MTliYTE3aDdmMWg5ZGdoLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzUzODA3MzU0NzE0LTNza2oxOTRnY3UyNGNkNzh2MTliYTE3aDdmMWg5ZGdoLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0ODY1ODcwNTI1ODczMzc0MjgyIiwiZW1haWwiOiJ2b2FuaG1pbmgyNzA3MTk4NkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IjhDOUk0LXp4VmRyM0tWWGtsYnBmWFEiLCJuYW1lIjoibWluaCB2byBhbmgiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FBdUU3bUJaT2RUVEZBbDByM3BCS3VjYWVJd01uSEk4dmJCYkMwY080TWJVQkE9czk2LWMiLCJnaXZlbl9uYW1lIjoibWluaCIsImZhbWlseV9uYW1lIjoidm8gYW5oIiwibG9jYWxlIjoidmkiLCJpYXQiOjE1NzY3NDExNTksImV4cCI6MTU3Njc0NDc1OSwianRpIjoiYTBiZTJlYWJlOGYxMjQ2ODdjZmNhZDZkZDBkZDNjZTJmYjRiYjMyMSJ9.VqXirmBBQQ479iOqgmX3cEJl__F67BtnIc8ZAwlZUoxTk - LOIjX - R6zzPY3coFSjAnVAGFyYZnfzDBsiH3w8hG0Osogu5amMs5u02ZCEU4cIe7SYyibaLJltYCNIpBI5GL4_V7DwnqKrw9byJZYaqh3XoykTjedOfFwIt7jxQ75hX291E3NxQyuuVbSZp1fHbJtv7yXU56p4VlfewlFHCZ9X1q_wUvamc0zVWI3btdtUaJMfBXG68HPzPIpF9tapC4EfAgaLYJd0J - o6SDYpXCk2lI54o4HfHShOiCsOazEtJB1J1hjp8Cmcghsp1xYwmeE7nKrxsGDVgLBXFlTLSA";
-        token.idpId = authResponse.idpId;
-        token.id_token = authResponse.id_token;
-        authResponse.access_token = googleUser.Zi.access_token;
-        $.ajax({
-            url: "/login",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(authResponse), // token
-            dataType: 'json',
-            success: function (result) {
-                console.log(result);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        })
-    }
-
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-
-        signInShareMoney(googleUser, (error, result) => {
-            console(error, result);
-        });
-    }
-
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
-            token = {
-                idpId: "",
-                id_token: ""
-            };
-        });
-    }
-</script>
 
 <body>
 
-    <div style="margin:100px;">
-        <nav class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <a class="navbar-brand" href="/">Express HTML</a>
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="/users">Users</a>
-                    </li>
-                    <li>
-                        <a href="/sitemap">Sitemap</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="jumbotron" style="padding:40px;">
-            <h1>Hello, world!</h1>
-            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured
-                content or information.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-        </div>
-        <div id="users_list_id"></div>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <a href="#" onclick="signOut();">Sign out</a>
-    </div>
+    <iframe id="ytplayer" type="text/html" width="320" height="180"
+        src="https://www.youtube.com/embed/uJ-aYz1akNw?autoplay=1&origin=http://sharemoney-env.7cskxswr2a.us-east-2.elasticbeanstalk.com"
+        frameborder="0"></iframe>
+
+    <iframe id="ytplayer" type="text/html" width="320" height="180"
+        src="https://www.youtube.com/embed/p09D1tpYWms?autoplay=1&origin=http://sharemoney-env.7cskxswr2a.us-east-2.elasticbeanstalk.com"
+        frameborder="0"></iframe>
+
+    <iframe id="ytplayer" type="text/html" width="320" height="180"
+        src="https://www.youtube.com/embed/vPRUv9IUlPI?autoplay=1&origin=http://sharemoney-env.7cskxswr2a.us-east-2.elasticbeanstalk.com"
+        frameborder="0"></iframe>
+
+    <iframe id="ytplayer" type="text/html" width="320" height="180"
+        src="https://www.youtube.com/embed/fFeMsprlZn8?autoplay=1&origin=http://sharemoney-env.7cskxswr2a.us-east-2.elasticbeanstalk.com"
+        frameborder="0"></iframe>
+
+    <iframe id="ytplayer" type="text/html" width="320" height="180"
+        src="https://www.youtube.com/embed/C_D_r90xxvE?autoplay=1&origin=http://sharemoney-env.7cskxswr2a.us-east-2.elasticbeanstalk.com"
+        frameborder="0"></iframe>
+
 </body>
 
 </html>

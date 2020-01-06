@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"start": "yarn start:frontend",
+		"start": "yarn start:backend",
 		"start0": "concurrently --kill-others \"yarn start:backend\" \"yarn start:frontend\"",
 		"start:backend": "yarn workspace social-media-network-backend start",
 		"start:frontend": "yarn workspace social-media-network-frontend start",
